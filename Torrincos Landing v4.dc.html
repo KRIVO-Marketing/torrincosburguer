@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#FCFCFB;color:#121212;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:#23807F;text-decoration:none}
+a:hover{color:#1B6766}
+*{box-sizing:border-box}
+button{font-family:inherit}
+:focus-visible{outline:2px solid #48B5B4;outline-offset:3px}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#FCFCFB;padding-bottom:{{ bottomPad }}">
+
+<div style="background:#121212;color:#F3F4F6;font-size:13px;line-height:1.4;text-align:center;padding:10px 16px">Delivery em Paulínia pelo WhatsApp e iFood · terça a domingo, das 18h às 23h30</div>
+
+<header style="position:sticky;top:0;z-index:30;background:rgba(252,252,251,.94);backdrop-filter:blur(10px);border-bottom:1px solid {{ headerBorder }};transition:border-color .3s">
+  <div style="max-width:1320px;margin:0 auto;padding:8px 24px;display:grid;grid-template-columns:{{ headerCols }};align-items:center;gap:16px">
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;gap:4px">
+        <a href="#cardapio" style="color:#121212;font-size:14px;padding:14px 12px 14px 0;white-space:nowrap" style-hover="color:#23807F">Cardápio</a>
+        <a href="#casa" style="color:#121212;font-size:14px;padding:14px 12px;white-space:nowrap" style-hover="color:#23807F">A casa</a>
+        <a href="#onde" style="color:#121212;font-size:14px;padding:14px 12px;white-space:nowrap" style-hover="color:#23807F">Onde estamos</a>
+      </nav>
+    </sc-if>
+    <a href="#topo" aria-label="Torrinco's — início" style="justify-self:{{ logoAlign }};font-family:Montserrat,sans-serif;font-weight:900;font-size:22px;letter-spacing:.06em;color:#121212;min-height:48px;display:flex;align-items:center">TORRINCO'S</a>
+    <div style="justify-self:end;display:flex;align-items:center;gap:8px">
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <a href="{{ ifoodHref }}" target="_blank" rel="noopener" style="color:#121212;font-size:14px;padding:14px 12px;white-space:nowrap" style-hover="color:#23807F">iFood ↗</a>
+      </sc-if>
+      <button onClick="{{ openOrder }}" style="background:#121212;color:#FFFFFF;border:0;font-weight:600;font-size:14px;padding:0 20px;height:44px;border-radius:9999px;cursor:pointer;white-space:nowrap" style-hover="background:#2E2E2E">Fazer pedido</button>
+    </div>
+  </div>
+</header>
+
+<section id="topo" data-screen-label="Hero" style="max-width:1320px;margin:0 auto;padding:clamp(40px,6vw,80px) 24px 24px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:28px 64px;align-items:end;margin-bottom:clamp(28px,4vw,48px)">
+    <h1 style="margin:0;font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(46px,7vw,108px);line-height:.94;letter-spacing:-.04em;text-wrap:balance">Smash de chapa, feito em Paulínia.</h1>
+    <div style="display:flex;flex-direction:column;gap:24px;max-width:440px">
+      <p style="margin:0;font-size:17px;line-height:1.6;color:#5E6366;text-wrap:pretty">Carne moída aqui todo dia, prensada na chapa quente, no pão brioche com manteiga. Pede pelo WhatsApp ou pelo iFood que chega quentinho.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="{{ waHref }}" target="_blank" rel="noopener" style="background:#48B5B4;color:#121212;font-weight:600;font-size:15px;padding:0 26px;height:52px;border-radius:9999px;display:flex;align-items:center;white-space:nowrap" style-hover="background:#3EA2A1;color:#121212">Pedir no WhatsApp</a>
+        <a href="{{ ifoodHref }}" target="_blank" rel="noopener" style="border:1px solid #121212;color:#121212;font-weight:600;font-size:15px;padding:0 26px;height:52px;border-radius:9999px;display:flex;align-items:center;white-space:nowrap" style-hover="background:#121212;color:#FFFFFF">Pedir no iFood</a>
+      </div>
+    </div>
+  </div>
+  <div style="position:relative;width:100%;height:clamp(320px,62vw,760px);border-radius:20px;overflow:hidden;background:#F1F1EE">
+    <image-slot id="hero-foto" shape="rect" placeholder="Foto principal — burger em close, 16:9"></image-slot>
+  </div>
+</section>
+
+<section id="casa" data-screen-label="A casa" style="max-width:1320px;margin:0 auto;padding:clamp(80px,10vw,144px) 24px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(48px,7vw,112px);align-items:center">
+    <div data-reveal="1" style="display:flex;flex-direction:column;gap:22px;max-width:520px">
+      <h2 style="margin:0;font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(40px,5vw,72px);line-height:.95;letter-spacing:-.04em">E aí, Paulínia.</h2>
+      <p style="margin:0;font-size:17px;line-height:1.7;color:#3D4144;text-wrap:pretty">A Torrinco's começou com uma chapa, uma receita de blend e a vontade de fazer o burger que a gente queria comer na cidade. A carne é moída aqui, a bola vai pra chapa no momento do pedido e é prensada até criar aquela casquinha. O queijo derrete por cima, o pão vai na manteiga.</p>
+      <p style="margin:0;font-size:17px;line-height:1.7;color:#3D4144;text-wrap:pretty">Nada pronto, nada congelado. Se quiser trocar alguma coisa no lanche, é só falar com a gente no WhatsApp.</p>
+      <span style="font-family:Montserrat,sans-serif;font-weight:700;font-size:16px;margin-top:6px">— Equipe Torrinco's</span>
+    </div>
+    <div data-reveal="1" style="position:relative;height:clamp(420px,46vw,620px)">
+      <div style="position:absolute;left:0;top:0;width:58%;height:68%;transform:rotate(-3deg);background:#FFFFFF;padding:10px;border-radius:14px;box-shadow:0 8px 24px rgba(18,18,18,.10)">
+        <div style="position:relative;width:100%;height:100%;border-radius:8px;overflow:hidden;background:#F1F1EE"><image-slot id="casa-1" shape="rect" placeholder="Foto — chapa / smash"></image-slot></div>
+      </div>
+      <div style="position:absolute;right:0;top:12%;width:46%;height:54%;transform:rotate(2.5deg);background:#FFFFFF;padding:10px;border-radius:14px;box-shadow:0 8px 24px rgba(18,18,18,.10)">
+        <div style="position:relative;width:100%;height:100%;border-radius:8px;overflow:hidden;background:#F1F1EE"><image-slot id="casa-2" shape="rect" placeholder="Foto — equipe"></image-slot></div>
+      </div>
+      <div style="position:absolute;left:24%;bottom:0;width:48%;height:40%;transform:rotate(-1deg);background:#FFFFFF;padding:10px;border-radius:14px;box-shadow:0 8px 24px rgba(18,18,18,.12)">
+        <div style="position:relative;width:100%;height:100%;border-radius:8px;overflow:hidden;background:#F1F1EE"><image-slot id="casa-3" shape="rect" placeholder="Foto — cliente comendo"></image-slot></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cardapio" data-screen-label="Cardápio" style="border-top:1px solid #E7E7E4">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(80px,10vw,144px) 24px">
+    <div data-reveal="1" style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:clamp(40px,5vw,64px)">
+      <h2 style="margin:0;font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(40px,5vw,72px);line-height:.95;letter-spacing:-.04em">Cardápio</h2>
+      <a href="{{ ifoodHref }}" target="_blank" rel="noopener" style="font-size:15px;font-weight:600;color:#121212;border-bottom:1px solid #121212;padding:12px 0 2px;white-space:nowrap" style-hover="color:#23807F;border-color:#23807F">Cardápio completo, porções e bebidas no iFood ↗</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:56px 24px">
+      <sc-for list="{{ menuList }}" as="m" hint-placeholder-count="6">
+        <article data-reveal="1" style="display:flex;flex-direction:column;gap:18px">
+          <div style="position:relative;width:100%;aspect-ratio:1/1;border-radius:16px;overflow:hidden;background:#F1F1EE">
+            <image-slot id="{{ m.slot }}" shape="rect" placeholder="{{ m.ph }}"></image-slot>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:1px solid #E7E7E4;padding-bottom:10px">
+              <h3 style="margin:0;font-family:Montserrat,sans-serif;font-weight:800;font-size:20px;letter-spacing:.02em;text-transform:uppercase">{{ m.name }}</h3>
+              <span style="font-size:16px;font-weight:600;white-space:nowrap">{{ m.price }}</span>
+            </div>
+            <p style="margin:4px 0 0;font-size:15px;line-height:1.55;color:#5E6366;text-wrap:pretty">{{ m.desc }}</p>
+            <a href="{{ m.wa }}" target="_blank" rel="noopener" style="align-self:flex-start;font-size:14px;font-weight:600;color:#23807F;padding:10px 0;min-height:44px;display:flex;align-items:center;white-space:nowrap" style-hover="color:#121212">Pedir esse no WhatsApp →</a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Avaliações" style="background:#F4F4F2">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:48px">
+    <div data-reveal="1" style="display:flex;flex-direction:column;gap:8px">
+      <span style="font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(88px,10vw,148px);line-height:.85;letter-spacing:-.05em">4,9</span>
+      <span style="font-size:15px;color:#5E6366">média das avaliações no iFood</span>
+    </div>
+    <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="2">
+      <figure data-reveal="1" style="margin:0;display:flex;flex-direction:column;gap:16px;justify-content:flex-end">
+        <blockquote style="margin:0;font-family:Montserrat,sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.4;letter-spacing:-.01em;text-wrap:pretty">“{{ r.text }}”</blockquote>
+        <figcaption style="font-size:14px;color:#5E6366">{{ r.who }}</figcaption>
+      </figure>
+    </sc-for>
+  </div>
+</section>
+
+<section id="pedir" data-screen-label="Pedir" style="max-width:1320px;margin:0 auto;padding:clamp(80px,10vw,144px) 24px">
+  <div style="border-top:1px solid #121212">
+    <a data-reveal="1" href="{{ waHref }}" target="_blank" rel="noopener" style="display:grid;grid-template-columns:{{ orderCols }};align-items:center;gap:16px 32px;padding:clamp(28px,4vw,48px) 0;border-bottom:1px solid #121212;color:#121212" style-hover="color:#23807F">
+      <span style="font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(56px,10vw,160px);line-height:.85;letter-spacing:-.05em">Pede aqui</span>
+      <span style="display:flex;flex-direction:column;gap:6px;max-width:300px"><span style="font-family:Montserrat,sans-serif;font-weight:800;font-size:22px;color:#121212">WhatsApp</span><span style="font-size:15px;line-height:1.5;color:#5E6366">Fala direto com a cozinha. Pix, cartão ou dinheiro. Dá pra retirar no balcão.</span></span>
+      <span style="width:64px;height:64px;border-radius:50%;background:#48B5B4;color:#121212;display:flex;align-items:center;justify-content:center;font-size:26px">→</span>
+    </a>
+    <a data-reveal="1" href="{{ ifoodHref }}" target="_blank" rel="noopener" style="display:grid;grid-template-columns:{{ orderCols }};align-items:center;gap:16px 32px;padding:clamp(28px,4vw,48px) 0;border-bottom:1px solid #121212;color:#121212" style-hover="color:#23807F">
+      <span style="font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(56px,10vw,160px);line-height:.85;letter-spacing:-.05em">ou aqui</span>
+      <span style="display:flex;flex-direction:column;gap:6px;max-width:300px"><span style="font-family:Montserrat,sans-serif;font-weight:800;font-size:22px;color:#121212">iFood</span><span style="font-size:15px;line-height:1.5;color:#5E6366">Mesmo cardápio, com seus cupons e a entrega acompanhada pelo app.</span></span>
+      <span style="width:64px;height:64px;border-radius:50%;border:1px solid #121212;color:#121212;display:flex;align-items:center;justify-content:center;font-size:26px">↗</span>
+    </a>
+  </div>
+</section>
+
+<section id="onde" data-screen-label="Onde estamos" style="max-width:1320px;margin:0 auto;padding:0 24px clamp(80px,10vw,144px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,6vw,96px);align-items:center">
+  <div data-reveal="1" style="position:relative;width:100%;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#F1F1EE">
+    <image-slot id="fachada" shape="rect" placeholder="Foto — fachada / balcão"></image-slot>
+  </div>
+  <div data-reveal="1" style="display:flex;flex-direction:column;gap:36px">
+    <h2 style="margin:0;font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(40px,5vw,72px);line-height:.95;letter-spacing:-.04em">Passa aqui.</h2>
+    <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:20px 40px;font-size:16px;line-height:1.55">
+      <dt style="color:#5E6366">Endereço</dt><dd style="margin:0">Rua Exemplo, 123 — Centro<br>Paulínia, SP</dd>
+      <dt style="color:#5E6366">Horário</dt><dd style="margin:0">Terça a domingo, 18h às 23h30<br><span style="color:#5E6366">Segunda fechado</span></dd>
+      <dt style="color:#5E6366">WhatsApp</dt><dd style="margin:0"><a href="{{ waHref }}" target="_blank" rel="noopener" style="color:#121212;border-bottom:1px solid #121212" style-hover="color:#23807F;border-color:#23807F">{{ waDisplay }}</a></dd>
+      <dt style="color:#5E6366">Instagram</dt><dd style="margin:0"><a href="https://instagram.com/" target="_blank" rel="noopener" style="color:#121212;border-bottom:1px solid #121212" style-hover="color:#23807F;border-color:#23807F">@torrincosburger</a></dd>
+    </dl>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=Torrinco%27s+Burger+Paul%C3%ADnia" target="_blank" rel="noopener" style="align-self:flex-start;border:1px solid #121212;color:#121212;font-weight:600;font-size:15px;padding:0 26px;height:52px;border-radius:9999px;display:flex;align-items:center;white-space:nowrap" style-hover="background:#121212;color:#FFFFFF">Abrir no Google Maps</a>
+  </div>
+</section>
+
+<footer data-screen-label="Rodapé" style="border-top:1px solid #E7E7E4;overflow:hidden">
+  <div style="max-width:1320px;margin:0 auto;padding:28px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:14px;color:#5E6366">
+    <span>© 2026 Torrinco's Burger · Paulínia, SP</span>
+    <div style="display:flex;gap:20px;flex-wrap:wrap">
+      <a href="{{ waHref }}" target="_blank" rel="noopener" style="color:#121212;padding:12px 0" style-hover="color:#23807F">WhatsApp</a>
+      <a href="{{ ifoodHref }}" target="_blank" rel="noopener" style="color:#121212;padding:12px 0" style-hover="color:#23807F">iFood</a>
+      <a href="https://instagram.com/" target="_blank" rel="noopener" style="color:#121212;padding:12px 0" style-hover="color:#23807F">Instagram</a>
+    </div>
+  </div>
+  <div aria-hidden="true" style="font-family:Montserrat,sans-serif;font-weight:900;font-size:17vw;line-height:.78;letter-spacing:-.045em;color:#48B5B4;white-space:nowrap;text-align:center;margin-bottom:-.1em;user-select:none">TORRINCO'S</div>
+</footer>
+
+<sc-if value="{{ showBar }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:25;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(252,252,251,.96);backdrop-filter:blur(10px);border-top:1px solid #E7E7E4;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+    <a href="{{ waHref }}" target="_blank" rel="noopener" style="height:50px;border-radius:9999px;background:#48B5B4;color:#121212;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center">WhatsApp</a>
+    <a href="{{ ifoodHref }}" target="_blank" rel="noopener" style="height:50px;border-radius:9999px;border:1px solid #121212;color:#121212;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center">iFood</a>
+  </div>
+</sc-if>
+
+<sc-if value="{{ orderOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeOrder }}" style="position:fixed;inset:0;z-index:50;background:rgba(18,18,18,.5);display:flex;align-items:{{ modalAlign }};justify-content:center;padding:16px">
+    <div onClick="{{ stop }}" role="dialog" aria-modal="true" aria-label="Escolha como pedir" style="position:relative;width:100%;max-width:460px;background:#FFFFFF;border-radius:20px;padding:28px 24px 24px;box-shadow:0 8px 24px rgba(18,18,18,.18);display:flex;flex-direction:column;gap:12px">
+      <button onClick="{{ closeOrder }}" aria-label="Fechar" style="position:absolute;top:12px;right:12px;width:48px;height:48px;border-radius:50%;border:0;background:#F4F4F2;color:#121212;font-size:22px;cursor:pointer" style-hover="background:#E7E7E4">×</button>
+      <h3 style="margin:0 0 8px;padding-right:56px;font-family:Montserrat,sans-serif;font-weight:800;font-size:26px;line-height:1.1;letter-spacing:-.03em">Por onde você quer pedir?</h3>
+      <a href="{{ waHref }}" target="_blank" rel="noopener" onClick="{{ closeOrder }}" style="background:#48B5B4;color:#121212;border-radius:14px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:68px" style-hover="background:#3EA2A1;color:#121212">
+        <span style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:17px">WhatsApp</span><span style="font-size:13px">Direto com a cozinha</span></span><span style="font-size:20px">→</span>
+      </a>
+      <a href="{{ ifoodHref }}" target="_blank" rel="noopener" onClick="{{ closeOrder }}" style="border:1px solid #E7E7E4;color:#121212;border-radius:14px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:68px" style-hover="border-color:#121212;color:#121212">
+        <span style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:17px">iFood</span><span style="font-size:13px;color:#5E6366">Pelo app, com seus cupons</span></span><span style="font-size:20px">↗</span>
+      </a>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;whatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5519999999999&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Pedidos&quot;},&quot;ifoodUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.ifood.com.br/delivery/paulinia-sp/&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Pedidos&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, solid: false, scrolled: false, order: false };
+
+  menu = [
+    { name: 'Clássico', price: 'R$ 29', desc: 'Blend 150g, cheddar, alface, tomate, cebola roxa e maionese da casa.' },
+    { name: 'Smash duplo', price: 'R$ 34', desc: 'Dois smash de 90g, cheddar duplo, cebola na chapa e molho Torrinco.' },
+    { name: 'Bacon jam', price: 'R$ 37', desc: 'Blend 150g, geleia de bacon feita aqui, queijo prato e maionese defumada.' },
+    { name: 'Cheddar melt', price: 'R$ 38', desc: 'Blend 180g coberto de cheddar cremoso, cebola crispy e picles.' },
+    { name: 'Pauliniense', price: 'R$ 39', desc: 'Blend 180g, queijo coalho na chapa, vinagrete de pimenta e mel.' },
+    { name: 'Veg', price: 'R$ 32', desc: 'Burger de grão-de-bico, muçarela, rúcula, tomate seco e maionese verde.' },
+  ];
+  reviewData = [
+    { text: 'Melhor smash de Paulínia. Chegou quente, pão macio e o molho é absurdo.', who: 'Mariana, pelo iFood' },
+    { text: 'Peço toda sexta. O Bacon jam é o meu, mas o Clássico não erra nunca.', who: 'Rafael, pelo WhatsApp' },
+  ];
+
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onScroll = () => {
+      const y = window.scrollY, solid = y > 40, scrolled = y > window.innerHeight * 0.6;
+      if (solid !== this.state.solid || scrolled !== this.state.scrolled) this.setState({ solid, scrolled });
+    };
+    this.onKey = e => { if (e.key === 'Escape') this.setState({ order: false }); };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('keydown', this.onKey);
+    this.onScroll();
+    if ('IntersectionObserver' in window) {
+      const vh = window.innerHeight;
+      this.io = new IntersectionObserver(es => es.forEach(en => {
+        if (!en.isIntersecting) return;
+        en.target.style.opacity = '';
+        en.target.animate([{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'none' }], { duration: 900, easing: 'cubic-bezier(.16,1,.3,1)' });
+        this.io.unobserve(en.target);
+      }), { threshold: 0.1 });
+      document.querySelectorAll('[data-reveal]').forEach(el => {
+        if (el.getBoundingClientRect().top > vh) { el.style.opacity = '0'; this.io.observe(el); }
+      });
+    }
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('keydown', this.onKey);
+    this.io && this.io.disconnect();
+  }
+  num() { return String(this.props.whatsapp ?? '5519999999999').replace(/\D/g, ''); }
+  wa(text) { return `https://wa.me/${this.num()}?text=${encodeURIComponent(text)}`; }
+  renderVals() {
+    const { w, solid, scrolled, order } = this.state;
+    const isDesktop = w >= 1040, small = w < 640;
+    const n = this.num();
+    const waDisplay = n.length >= 12 ? `(${n.slice(2, 4)}) ${n.slice(4, n.length - 4)}-${n.slice(-4)}` : n;
+    return {
+      isDesktop,
+      headerCols: isDesktop ? '1fr auto 1fr' : '1fr auto',
+      logoAlign: isDesktop ? 'center' : 'start',
+      headerBorder: solid ? '#E7E7E4' : 'transparent',
+      waHref: this.wa("Olá, Torrinco's! Quero fazer um pedido."),
+      ifoodHref: this.props.ifoodUrl ?? 'https://www.ifood.com.br/delivery/paulinia-sp/',
+      waDisplay,
+      menuList: this.menu.map((p, i) => ({ ...p, slot: `burger-${i + 1}`, ph: `Foto 1:1 — ${p.name}`, wa: this.wa(`Olá, Torrinco's! Quero pedir um ${p.name}.`) })),
+      reviews: this.reviewData,
+      orderCols: small ? '1fr auto' : 'minmax(0,1fr) minmax(0,300px) auto',
+      showBar: !isDesktop && scrolled && !order,
+      bottomPad: isDesktop ? '0' : '72px',
+      orderOpen: order,
+      openOrder: () => this.setState({ order: true }),
+      closeOrder: () => this.setState({ order: false }),
+      stop: e => e.stopPropagation(),
+      modalAlign: small ? 'flex-end' : 'center',
+    };
+  }
+}
+</script>
+</body>
+</html>
